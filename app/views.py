@@ -52,7 +52,7 @@ def ExploitDB(req_path):
     # Check if path is a file and serve
     if os.path.isfile(abs_path):
 		# return "req_path: " + req_path + "<br><br>abs_path: " + abs_path
-		return send_file('/opt/exploit-database' + req_path)
+		return send_file('/opt/exploit-database/' + req_path)
 
     # Show directory contents
     files = os.listdir(abs_path)
