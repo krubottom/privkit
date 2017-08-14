@@ -40,7 +40,7 @@ def WindowsReverseShell(req_path):
 @app.route('/sploitdb/<path:req_path>')
 @app.route('/sploitdb')
 def ExploitDB(req_path):
-    BASE_DIR = '/opt/exploit-database'
+    BASE_DIR = '/opt/exploit-database/platforms'
 
     # Joining the base and the requested path
     abs_path = os.path.join(BASE_DIR, req_path)
@@ -52,7 +52,7 @@ def ExploitDB(req_path):
     # Check if path is a file and serve
     if os.path.isfile(abs_path):
 		# return "req_path: " + req_path + "<br><br>abs_path: " + abs_path
-		return send_file('/opt/exploit-database/' + req_path)
+		return send_file('/opt/exploit-database/platforms/' + req_path)
 
     # Show directory contents
     files = os.listdir(abs_path)
