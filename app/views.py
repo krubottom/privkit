@@ -39,7 +39,7 @@ def WindowsReverseShell(req_path):
 @app.route('/sploitdb/', defaults={'req_path': ''})
 @app.route('/sploitdb/<path:req_path>')
 @app.route('/sploitdb')
-def WindowsReverseShell(req_path):
+def ExploitDB(req_path):
     BASE_DIR = '/opt/exploit-database'
 
     # Joining the base and the requested path
