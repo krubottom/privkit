@@ -36,6 +36,28 @@ def WindowsReverseShell(req_path):
     files = os.listdir(abs_path)
     return render_template('files.html', files=files, links=site_map_links())
 
+@app.route('/sploitdb/', defaults={'req_path': ''})
+@app.route('/sploitdb/<path:req_path>')
+@app.route('/sploitdb')
+def WindowsReverseShell(req_path):
+    BASE_DIR = '/opt/exploit-database'
+
+    # Joining the base and the requested path
+    abs_path = os.path.join(BASE_DIR, req_path)
+
+    # Return 404 if path doesn't exist
+    if not os.path.exists(abs_path):
+        return abort(404)
+
+    # Check if path is a file and serve
+    if os.path.isfile(abs_path):
+		# return "req_path: " + req_path + "<br><br>abs_path: " + abs_path
+		return send_file('/opt/exploit-database' + req_path)
+
+    # Show directory contents
+    files = os.listdir(abs_path)
+    return render_template('files.html', files=files, links=site_map_links())
+
 @app.route('/uploaded/', defaults={'req_path': ''})
 @app.route('/uploaded/<path:req_path>')
 @app.route('/uploaded')
