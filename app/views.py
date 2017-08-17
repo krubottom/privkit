@@ -14,10 +14,10 @@ def index():
 
 # Show directory of files for download
 # Removing AutoIndex, still needs lots of fixes
-@app.route('/windows-shell/', defaults={'req_path': ''})
-@app.route('/windows-shell/<path:req_path>')
-@app.route('/windows-shell')
-def WindowsReverseShell(req_path):
+@app.route('/reverse-shell/', defaults={'req_path': ''})
+@app.route('/reverse-shell-shell/<path:req_path>')
+@app.route('/reverse-shell-shell')
+def ReverseShell(req_path):
     BASE_DIR = 'app/files/windows-reverse-shell'
 
     # Joining the base and the requested path
@@ -58,29 +58,6 @@ def ExploitDB(req_path):
     files = os.listdir(abs_path)
     return render_template('files.html', files=files, links=site_map_links())
 
-@app.route('/uploaded/', defaults={'req_path': ''})
-@app.route('/uploaded/<path:req_path>')
-@app.route('/uploaded')
-def UploadedFiles(req_path):
-    BASE_DIR = 'app/files'
-
-    # Joining the base and the requested path
-    abs_path = os.path.join(BASE_DIR, req_path)
-
-    # Return 404 if path doesn't exist
-    if not os.path.exists(abs_path):
-        return abort(404)
-
-    # Check if path is a file and serve
-    if os.path.isfile(abs_path):
-		# return "req_path: " + req_path + "<br><br>abs_path: " + abs_path
-		return send_file('files/' + req_path)
-
-    # Show directory contents
-    files = os.listdir(abs_path)
-	#return render_template('files.html', files=files, links=site_map_links())
-
-
 @app.route("/scriptgen", methods = ['GET', 'POST'])
 def ScriptGen():
 	form = PageForm()
@@ -118,9 +95,9 @@ def form():
 	return render_template('formentry.html', title='Form Entry', form=form, links=site_map_links())
 
 # Generates page with a list of all @app.route's
-@app.route("/site-map")
-def site_map():
-    return render_template("site_map.html", links=site_map_links())
+# @app.route("/site-map")
+# def site_map():
+#     return render_template("site_map.html", links=site_map_links())
 
 # RESTful API example will go here, doesn't do anything yet
 @app.route("/api")
