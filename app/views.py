@@ -78,7 +78,7 @@ def UploadedFiles(req_path):
 
     # Show directory contents
     files = os.listdir(abs_path)
-	return render_template('files.html', files=files, links=site_map_links())
+	#return render_template('files.html', files=files, links=site_map_links())
 
 
 @app.route("/scriptgen", methods = ['GET', 'POST'])
@@ -86,8 +86,8 @@ def ScriptGen():
 	form = PageForm()
 	if form.validate_on_submit():
 		FormTextField = form.FormTextField.data
-		return render_template('formreturn.html', title='Form Return', textfield=FormTextField, links=site_map_links())
-	return render_template('formentry.html', title='Form Entry', form=form, links=site_map_links())
+		return render_template('scriptgenreturn.html', title='Form Return', textfield=FormTextField, links=site_map_links())
+	return render_template('scriptgenentry.html', title='Form Entry', form=form, links=site_map_links())
 
 
 # Uploading files
